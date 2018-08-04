@@ -30,6 +30,7 @@ function populateDates(){
 
 //function to set everything to zero if "off"
 function checkOffs(){
+    var bigTotal = 0;
     for(var i = 1; i <= 14; i++){
         if(document.getElementById("off"+i).checked){
             document.getElementById("date"+i).style.color = "darkgrey";
@@ -65,6 +66,8 @@ function checkOffs(){
             document.getElementById("total"+i).style.color = "black";
             document.getElementById("total"+i).style.backgroundColor = "white";
         }
+        bigTotal += Number(document.getElementById("total"+i).value);
+        document.getElementById("biggestTotal").value = bigTotal;
     }
 }
 
