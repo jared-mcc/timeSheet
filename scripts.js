@@ -3,30 +3,8 @@
 //
 "use strict"
 
-//function to pupulate lunches
-function populateLunches(){
-    for(var i = 1; i <= 14; i++){
-        document.getElementById("lunch"+i).value = 30;
-    }
-}
-
 //function to populated dates based off of one entered
-function populateDates(){
-    var filled;
 
-    //find a filled one
-    for(var i = 0; i <= 14; i++){
-        if(document.getElementById("date"+ i).valueAsNumber != ""){
-            filled = i;
-            console.log(getElementById("date"+i).valueAsNumber);
-        }
-    }
-
-    //caculate others based off of filled
-    for(var i = 0; i <= 14; i++){
-        
-    }    
-}
 
 //function to set everything to zero if "off"
 function checkOffs(){
@@ -91,35 +69,61 @@ function arrayData(){
         smallArray[2] = document.getElementById("start" + row).value;
         smallArray[3] = document.getElementById("end" + row).value;
         smallArray[4] = document.getElementById("lunch" + row).value;
-        smallArray[5] = document.getElementById("total" + row).value;
+        smallArray[5] = document.getElementById("off"+ row).checked;
         bigArray[row-1] = smallArray;
+        smallArray = [];
     }
-    printArray(bigArray);
+    return bigArray;
 }
 
 //funciton to stringify for storage
-
+function storeData(){
+    var userData = arrayData();
+    localStorage["userData"] = JSON.stringify(userData);
+}
 //function to populate data from stored matrix
+function populateData(){
+    var userData = JSON.parse(localStorage["userData"]);
 
-//function to print array as test
-function printArray(array){
-    for(var i = 0; i < array.length; i++){
-        console.log(array[i]);
-        console.log(document.getElementById("date1").value);
+    for(var row = 1; row <= 14; row++){
+        for(var col = 0; col < 6; col++){
+            document.getElementById("date" + row).value = userData[row-1][col];
+            document.getElementById("location" + row).value = userData[row-1][col];
+            document.getElementById("start" + row).value = userData[row-1][col];
+            document.getElementById("end" + row).value = userData[row-1][col];
+            document.getElementById("lunch" + row).value = userData[row-1][col];
+            document.getElementById("off"+ row).checked = userData[row-1][col];
+        }
     }
 }
+
+
+//function to clear array and populate initial
+function cleanArray(){
+    for(var row = 1; row <= 14; row++){
+        localStorage.clear();
+        document.getElementById("date" + row).value = "";
+        document.getElementById("location" + row).value = "";
+        document.getElementById("start" + row).value = "08:00";
+        document.getElementById("end" + row).value = "04:30";
+        document.getElementById("lunch" + row).value = 30;
+        document.getElementById("off"+ row).checked = "true";
+    }
+}
+
 
 //event listeners
 var button1 =   document.getElementById("button1");
 var button2 =   document.getElementById("button2");
     
 if (window.addEventListener) {
-    window.addEventListener("load", populateLunches, false);
+    window.addEventListener("load", populateData, false);
     window.addEventListener("load", calculateTotals, false);
     window.addEventListener("load", checkOffs, false);
     window.addEventListener("input", calculateTotals, false);
     window.addEventListener("input", checkOffs, false);
-    button1.addEventListener("click", arrayData, false);
+    button1.addEventListener("click", storeData, false);
+    button2.addEventListener("click", cleanArray, false);
 }
 else if (window.attachEvent) {
     window.attachEvent("input", checkOffs);
