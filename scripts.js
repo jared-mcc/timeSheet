@@ -107,8 +107,15 @@ function cleanArray(){
         document.getElementById("start" + row).value = "08:00";
         document.getElementById("end" + row).value = "04:30";
         document.getElementById("lunch" + row).value = 30;
-        document.getElementById("off"+ row).checked = "true";
+        if(row === 2 || row === 3 || row === 9 || row === 10){
+            document.getElementById("off"+ row).checked = "true";
+        }
+        else{
+            document.getElementById("off"+ row).checked = "false";
+        }
     }
+    populateData();
+    calculateTotals();
 }
 
 
@@ -116,21 +123,13 @@ function cleanArray(){
 var button1 =   document.getElementById("button1");
 var button2 =   document.getElementById("button2");
     
-if (window.addEventListener) {
     window.addEventListener("load", populateData, false);
     window.addEventListener("load", calculateTotals, false);
     window.addEventListener("load", checkOffs, false);
     window.addEventListener("input", calculateTotals, false);
     window.addEventListener("input", checkOffs, false);
+    window.addEventListener("input", populateData, false);
     button1.addEventListener("click", storeData, false);
     button2.addEventListener("click", cleanArray, false);
-}
-else if (window.attachEvent) {
-    window.attachEvent("input", checkOffs);
-    window.attachEvent("onload", checkOffs);
-    window.attachEvent("onload", populateLunches);
-    window.attachEvent("onload", calculateTotals);
-    window.attachEvent("input", calculateTotals);
-    button1.attachShadow("onclick", arrayData);
-}
+
 
