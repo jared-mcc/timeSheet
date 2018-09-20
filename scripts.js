@@ -86,14 +86,12 @@ function populateData(){
     var userData = JSON.parse(localStorage["userData"]);
 
     for(var row = 1; row <= 14; row++){
-        for(var col = 0; col < 6; col++){
-            document.getElementById("date" + row).value = userData[row-1][col];
-            document.getElementById("location" + row).value = userData[row-1][col];
-            document.getElementById("start" + row).value = userData[row-1][col];
-            document.getElementById("end" + row).value = userData[row-1][col];
-            document.getElementById("lunch" + row).value = userData[row-1][col];
-            document.getElementById("off"+ row).checked = userData[row-1][col];
-        }
+        document.getElementById("date" + row).value = userData[row-1][0];
+        document.getElementById("location" + row).value = userData[row-1][1];
+        document.getElementById("start" + row).value = userData[row-1][2];
+        document.getElementById("end" + row).value = userData[row-1][3];
+        document.getElementById("lunch" + row).value = 1 * userData[row-1][4];
+        document.getElementById("off"+ row).checked = userData[row-1][5];
     }
 }
 
