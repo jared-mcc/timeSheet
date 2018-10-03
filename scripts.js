@@ -56,7 +56,7 @@ function calculateTotals(){
         var end = document.getElementById("end"+i).valueAsNumber;
         var start = document.getElementById("start"+i).valueAsNumber;
         var lunch = document.getElementById("lunch"+i).value;
-        document.getElementById("total"+i).value = ((end - start) / 3600000) - (lunch/60);       
+        document.getElementById("total"+i).value = Number(((end - start) / 3600000) - (lunch/60));       
     }
 }
 //function to create matrix of data
@@ -90,7 +90,7 @@ function populateData(){
         document.getElementById("location" + row).value = userData[row-1][1];
         document.getElementById("start" + row).value = userData[row-1][2];
         document.getElementById("end" + row).value = userData[row-1][3];
-        document.getElementById("lunch" + row).value = 1 * userData[row-1][4];
+        document.getElementById("lunch" + row).value = Number(userData[row-1][4]);
         document.getElementById("off"+ row).checked = userData[row-1][5];
     }
 }
@@ -103,16 +103,17 @@ function cleanArray(){
         document.getElementById("date" + row).value = "";
         document.getElementById("location" + row).value = "";
         document.getElementById("start" + row).value = "08:00";
-        document.getElementById("end" + row).value = "04:30";
-        document.getElementById("lunch" + row).value = 30;
+        document.getElementById("end" + row).value = "16:30";
+        document.getElementById("lunch" + row).value = "30";
         if(row === 2 || row === 3 || row === 9 || row === 10){
-            document.getElementById("off"+ row).checked = "true";
+            document.getElementById("off"+ row).checked = true;
         }
         else{
-            document.getElementById("off"+ row).checked = "false";
+            document.getElementById("off"+ row).checked = false;
         }
     }
-    populateData();
+   // storeData();
+    checkOffs();
     calculateTotals();
 }
 
@@ -127,7 +128,7 @@ var button2 =   document.getElementById("button2");
     window.addEventListener("input", calculateTotals, false);
     window.addEventListener("input", checkOffs, false);
     window.addEventListener("input", populateData, false);
-    button1.addEventListener("click", storeData, false);
+    window.addEventListener("input", storeData, false);
     button2.addEventListener("click", cleanArray, false);
 
 
