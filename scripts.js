@@ -78,21 +78,21 @@ function arrayData(){
 
 //funciton to stringify for storage
 function storeData(){
-    var userData = arrayData();
-    localStorage["userData"] = JSON.stringify(userData);
+    localStorage["userDatas"] = JSON.stringify(arrayData());
 }
 //function to populate data from stored matrix
 function populateData(){
-    var userData = JSON.parse(localStorage["userData"]);
+    localStorage["userDatas"] = JSON.stringify(arrayData());
+    var userData = JSON.parse(localStorage["userDatas"]);
 
-    for(var row = 1; row <= 14; row++){
+  for(var row = 1; row <= 14; row++){
         document.getElementById("date" + row).value = userData[row-1][0];
         document.getElementById("location" + row).value = userData[row-1][1];
         document.getElementById("start" + row).value = userData[row-1][2];
         document.getElementById("end" + row).value = userData[row-1][3];
         document.getElementById("lunch" + row).value = Number(userData[row-1][4]);
         document.getElementById("off"+ row).checked = userData[row-1][5];
-    }
+  }
 }
 
 
