@@ -4,6 +4,29 @@
 "use strict"
 
 //function to populated dates based off of one entered
+function setDate(){
+    
+    var i = (this.id === "date0") ? (1) : (14);
+    var x = (this.id === "date0") ? (1) : (-1);
+    var end = (this.id === "date0") ? (15) : (0);
+    var tomorrow = (this.id === "date0") ? new Date(document.getElementById("date0").value) : new Date(document.getElementById("date15").value);
+    if(this.id === "date15")
+        tomorrow.setDate(tomorrow.getDate()+2);
+
+    while(i !== end){
+        tomorrow.setDate( tomorrow.getDate() + x );
+        var dateBuffer = (tomorrow.getDate() >= 10) ? ("") : ("0");
+        var monthBuffer = (tomorrow.getMonth() >= 9) ? ("") : ("0");
+        document.getElementById("date" + i).value = String(tomorrow.getFullYear()) + "-" + monthBuffer + String(tomorrow.getMonth() + 1) + "-" + dateBuffer + String(tomorrow.getDate());
+        document.getElementById("off"+ i).checked = (tomorrow.getDay() === 5 || tomorrow.getDay() === 6) ? true : false;
+
+        i += x;
+    }
+    if(this.id === "date0")
+        document.getElementById("date15").value = document.getElementById("date14").value;
+    else
+        document.getElementById("date0").value = document.getElementById("date1").value;
+}
 
 
 //function to set everything to zero if "off"
@@ -13,16 +36,22 @@ function checkOffs(){
         if(document.getElementById("off"+i).checked){
             document.getElementById("date"+i).style.color = "darkgrey";
             document.getElementById("date"+i).style.backgroundColor = "grey";
+
             document.getElementById("location"+i).style.color = "darkgrey";
             document.getElementById("location"+i).style.backgroundColor = "grey";
+
             document.getElementById("start"+i).style.color = "darkgrey";
             document.getElementById("start"+i).style.backgroundColor = "grey";
+
             document.getElementById("end"+i).style.color = "darkgrey";
             document.getElementById("end"+i).style.backgroundColor = "grey";
+
             document.getElementById("lunch"+i).style.color = "darkgrey";
             document.getElementById("lunch"+i).style.backgroundColor = "grey";
+
             document.getElementById("total"+i).style.color = "darkgrey";
             document.getElementById("total"+i).style.backgroundColor = "grey";
+            
             document.getElementById("total"+i).value = 0;
         }
         else{
@@ -70,21 +99,23 @@ function arrayData(){
         smallArray[3] = document.getElementById("end" + row).value;
         smallArray[4] = document.getElementById("lunch" + row).value;
         smallArray[5] = document.getElementById("off"+ row).checked;
-        bigArray[row-1] = smallArray;
+        bigArray.push(smallArray);
         smallArray = [];
     }
     return bigArray;
+
 }
 
 //funciton to stringify for storage
 function storeData(){
     localStorage["userDatas"] = JSON.stringify(arrayData());
+    localStorage["userName"] = JSON.stringify(document.getElementById("employeeName").value);
 }
 //function to populate data from stored matrix
 function populateData(){
-    localStorage["userDatas"] = JSON.stringify(arrayData());
-    var userData = JSON.parse(localStorage["userDatas"]);
-
+   
+    var userData = JSON.parse(localStorage.getItem('userDatas'));
+    document.getElementById("employeeName").value = JSON.parse(localStorage.getItem('userName'));
   for(var row = 1; row <= 14; row++){
         document.getElementById("date" + row).value = userData[row-1][0];
         document.getElementById("location" + row).value = userData[row-1][1];
@@ -93,8 +124,9 @@ function populateData(){
         document.getElementById("lunch" + row).value = Number(userData[row-1][4]);
         document.getElementById("off"+ row).checked = userData[row-1][5];
   }
+  document.getElementById("date0").value = document.getElementById("date1").value;
+  document.getElementById("date15").value = document.getElementById("date14").value;
 }
-
 
 //function to clear array and populate initial
 function cleanArray(){
@@ -105,30 +137,28 @@ function cleanArray(){
         document.getElementById("start" + row).value = "08:00";
         document.getElementById("end" + row).value = "16:30";
         document.getElementById("lunch" + row).value = "30";
-        if(row === 2 || row === 3 || row === 9 || row === 10){
-            document.getElementById("off"+ row).checked = true;
-        }
-        else{
-            document.getElementById("off"+ row).checked = false;
-        }
+        document.getElementById("off" + row).checked = false;
     }
-   // storeData();
+    document.getElementById("employeeName").value = "";
+    storeData();
     checkOffs();
     calculateTotals();
 }
 
-
 //event listeners
 var button1 =   document.getElementById("button1");
 var button2 =   document.getElementById("button2");
+var startDate = document.getElementById("date0");
+var endDate = document.getElementById("date15");
     
     window.addEventListener("load", populateData, false);
     window.addEventListener("load", calculateTotals, false);
     window.addEventListener("load", checkOffs, false);
     window.addEventListener("input", calculateTotals, false);
     window.addEventListener("input", checkOffs, false);
-    window.addEventListener("input", populateData, false);
     window.addEventListener("input", storeData, false);
+    startDate.addEventListener("input", setDate, false);
+    endDate.addEventListener("input", setDate, false);
     button2.addEventListener("click", cleanArray, false);
 
 
