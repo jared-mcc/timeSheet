@@ -140,14 +140,46 @@ function cleanArray(){
         document.getElementById("off" + row).checked = false;
     }
     document.getElementById("employeeName").value = "";
+    document.getElementById("date0").value = "";
+    document.getElementById("date15").value = "";
     storeData();
     checkOffs();
     calculateTotals();
 }
 
+//function to initiate popup for clear
+function cleanPop(){
+
+    //display block alert div
+    document.getElementById("cancelButton").style.display = "block";
+    document.getElementById("clearButton").style.display = "block";
+    document.getElementById("button2").style.display = "none";
+}
+
+//clear back to normal on "cancel" of clear
+function cancelChoice(){
+    //display none block alert div
+    document.getElementById("cancelButton").style.display = "none";
+    document.getElementById("clearButton").style.display = "none";
+    document.getElementById("button2").style.display = "block";
+}
+
+
+// run clean array then clear back to normal on "cancel" of clear
+function cleanChoice(){
+    cleanArray();
+
+    //display none block alert div
+    document.getElementById("cancelButton").style.display = "none";
+    document.getElementById("clearButton").style.display = "none";
+    document.getElementById("button2").style.display = "block";
+}
+
 //event listeners
 var button1 =   document.getElementById("button1");
 var button2 =   document.getElementById("button2");
+var cancelButton = document.getElementById("cancelButton");
+var clearButton = document.getElementById("clearButton");
 var startDate = document.getElementById("date0");
 var endDate = document.getElementById("date15");
     
@@ -159,6 +191,8 @@ var endDate = document.getElementById("date15");
     window.addEventListener("input", storeData, false);
     startDate.addEventListener("input", setDate, false);
     endDate.addEventListener("input", setDate, false);
-    button2.addEventListener("click", cleanArray, false);
+    button2.addEventListener("click", cleanPop, false);
+    clearButton.addEventListener("click", cleanChoice, false);
+    cancelButton.addEventListener("click", cancelChoice, false);
 
 

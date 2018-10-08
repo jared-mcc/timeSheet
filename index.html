@@ -10,9 +10,9 @@
    </head>
     <body>
         <div id="container">
-                <input type="date" id="date0">
-                <input type="date" id="date15">
-                <input type="text" id="employeeName" placeholder="Employee Name">
+            <input type="date" id="date0">
+            <input type="date" id="date15">
+            <input type="text" id="employeeName" placeholder="Employee Name">
         <table id="bigTable">
             <tr>
                 <th>
@@ -358,8 +358,13 @@
                     </td>
                 </tr>
         </table>
-        <p><button type="button" id="button2">Clear</button></p>
-        <p><button type="button" id="button1">Set dates</button></p>
+            <div id="confirmAlert">
+                <div id="buttonDiv">
+                    <button type="button" id="cancelButton">Cancel</button>
+                    <button type="button" id="clearButton">I'm sure</button>
+                    <button type="button" id="button2">Clear</button>
+                </div>
+            </div>
         </div>
     <script type="text/javascript" src="scripts.js"></script>
     </body>
