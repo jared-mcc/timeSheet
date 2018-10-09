@@ -28,7 +28,6 @@ function setDate(){
         document.getElementById("date0").value = document.getElementById("date1").value;
 }
 
-
 //function to set everything to zero if "off"
 function checkOffs(){
     var bigTotal = 0;
@@ -163,7 +162,6 @@ function cancelChoice(){
     document.getElementById("clearButton").style.display = "none";
     document.getElementById("button2").style.display = "block";
 }
-
 
 // run clean array then clear back to normal on "cancel" of clear
 function cleanChoice(){

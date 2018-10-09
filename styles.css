@@ -1,39 +1,13 @@
-p {
-    margin: 10px;
-    padding: 10px;
+*{
+    box-sizing: border-box;
 }
 
 body{
     background-color: lightgray;
     font-family: Arial, Helvetica, sans-serif; 
-}
-
-#container{
-    padding: 20px;
-    max-width: 700px;
-    background-color: white;
-    margin: 50px auto;
-    box-shadow: 10px 10px 10px grey;
-}
-
-#button1{
-    float: right;
-}
-
-#confirmAlert{
-    display: block;
-    width:200px;
-    height:40px;   
-}
-
-.stopScrolling{
-    height: 100%;
-    overflow: hidden;
-}
-
-#popupP{
-    text-align: center;
-    vertical-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 10pt;
 }
 
 #cancelButton, #clearButton, #button2{
@@ -49,10 +23,148 @@ body{
 }
 
 #cancelButton{
-    
     background-color: coral;
 }
 
 #button2{
     display:block;
 }
+
+/* STYLES FOR THE GRID */
+#container{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#sheetInfo{
+    height: 4vh;
+    width: 100%;
+    background-color: #516BEC;
+    color: white;
+    padding: 0 1%;
+}
+
+#sheetInfo ::placeholder{
+    color:white;
+}
+
+#sheetGrid{
+    display: grid;
+    grid-template-columns: 6vw 6vw 34vw 34vw 10vw 10vw;
+    grid-template-rows: 3vh 3vh;
+    background-color: white;
+    width: 100vw;
+}
+
+#buttonBox{
+    height: 6vh;
+    width: 100%;
+    background-color: #516BEC;    
+}
+.day{
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    border-right: 1px solid lightgray;
+    color: #516BEC;
+    font-weight: bold;
+    padding: 1.8vh 1.3vw;
+    height: 100%;
+}
+
+#biggestTotal{
+    background-color: #516BEC;
+    float: right;
+    border: none; 
+    color: white;
+    margin: 1.75vh 5px 0 0;
+    border-bottom: 1px solid white;
+}
+
+.off{
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    border: none;
+    margin: auto;
+}
+
+.date{
+    grid-column: 3;
+    grid-row: 1;
+    height: 100%;
+    border: none;
+}
+
+.location{
+    grid-column: 3;
+    grid-row: 2;
+    height: 100%;
+    border: none;
+}
+
+.start{
+    grid-column: 4;
+    grid-row: 1;
+    text-indent: 14px;
+    border: none;
+}
+
+
+#startIcon{
+    grid-column: 4;
+    grid-row: 1;
+    z-index: 12;
+    height: 8vh;
+    width: auto;
+    margin: .4vh;
+}
+
+.end{
+    grid-column: 4;
+    grid-row: 2;
+    text-indent: 14px;
+    border: none;
+}
+
+#endIcon{
+    grid-column: 4;
+    grid-row: 2;
+    z-index: 12;
+    height: 8vh;
+    width: auto;
+    margin: .4vh;
+}
+
+.lunch{
+    grid-column: 5;
+    grid-row: 1 / span 2;
+    padding: 5px;
+    border: none;
+}
+
+.total{
+    grid-column: 6;
+    grid-row: 1 / span 2;
+    padding: 7px;
+    border: none;
+}
+/* STYLES FOR THE INPUTS */
+#date0, #date15{
+    background-color: #516BEC;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    width: 32%;
+    height: 1.6em;
+}
+
+#employeeName{
+    background-color: #516BEC;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    width: 28%;
+    height: 1.6em;
+}
+
