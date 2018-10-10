@@ -15,18 +15,23 @@
                 <input type="date" id="date15">
                 <input type="text" id="employeeName" placeholder="Employee Name">
             </div><!-- end sheetInfo-->
-            <div id="sheetGrid" style="color: white; background-color:#4557BC" >
+            <div class="sheetGrid" style="color: white; background-color:#4557BC" >
                 <div class="day" id="day0" style="border: none;"></div>
-                <p class="off">OFF</p>
-                <p class="date" style="grid-row: 1 / span 2; text-align: center;">Jobsite</p>
+                <p class="off0">OFF</p>
+                <p class="date" readonly="readonly" style="grid-row: 1 / span 2; text-align: center;">Jobsite</p>
                 <p class="start" style="grid-row: 1 / span 2; text-align: center;">Time In/Out</p>
                 <p class="lunch" style="grid-row: 1; padding:0; margin: 1vh auto; text-align: center; font-size:9pt;">Lunch<br>(min)</p>
                 <p class="total" style="grid-row: 1; padding:0; margin: 1vh auto; text-align: center; font-size:9pt;">Total<br>(hr)</p>
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="1">
                 <div class="day" id="day1"></div>
+                <div class="toggleContainer">
+                    <label for="off1" class="toggleOff"></label>
+                    <div class="element1"></div>
+                    <div class="element2"></div>
+                </div>
                 <input type="checkbox" class="off" id="off1">
-                <input type="date" class="date" id="date1">
+                <input type="date" readonly="readonly" class="date" id="date1">
                 <input type="text" class="location" id="location1" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start1" value="08:00">
@@ -35,10 +40,15 @@
                 <input type="text" class="lunch" id="lunch1" size="1" placeholder="30">
                 <input type="text" class="total" id="total1" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="2">
                 <div class="day" id="day2"></div>
+                <div class="toggleContainer">
+                    <label for="off2" class="toggleOff"></label>
+                    <div class="element2"></div>
+                    <div class="element1"></div>
+                </div>
                 <input type="checkbox" class="off" id="off2">
-                <input type="date" class="date" id="date2">
+                <input type="date" readonly="readonly" class="date" id="date2">
                 <input type="text" class="location" id="location2" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start2" value="08:00">
@@ -47,10 +57,15 @@
                 <input type="text" class="lunch" id="lunch2" size="1" placeholder="30">
                 <input type="text" class="total" id="total2" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="3">
                 <div class="day" id="day3"></div>
+                <div class="toggleContainer">
+                    <label for="off3" class="toggleOff"></label>
+                    <div class="element1"></div>
+                    <div class="element2"></div>
+                </div>
                 <input type="checkbox" class="off" id="off3">
-                <input type="date" class="date" id="date3">
+                <input type="date" readonly="readonly" class="date" id="date3">
                 <input type="text" class="location" id="location3" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start3" value="08:00">
@@ -59,10 +74,15 @@
                 <input type="text" class="lunch" id="lunch3" size="1" placeholder="30">
                 <input type="text" class="total" id="total3" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="4">
                 <div class="day" id="day4"></div>
+                <div class="toggleContainer">
+                    <label for="off4" class="toggleOff"></label>
+                    <div class="element2"></div>
+                    <div class="element1"></div>
+                </div>
                 <input type="checkbox" class="off" id="off4">
-                <input type="date" class="date" id="date4">
+                <input type="date" readonly="readonly" class="date" id="date4">
                 <input type="text" class="location" id="location4" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start4" value="08:00">
@@ -71,10 +91,15 @@
                 <input type="text" class="lunch" id="lunch4" size="1" placeholder="30">
                 <input type="text" class="total" id="total4" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="5">
                 <div class="day" id="day5"></div>
+                <div class="toggleContainer">
+                    <label for="off5" class="toggleOff"></label>
+                    <div class="element1"></div>
+                    <div class="element2"></div>
+                </div>
                 <input type="checkbox" class="off" id="off5">
-                <input type="date" class="date" id="date5">
+                <input type="date" readonly="readonly" class="date" id="date5">
                 <input type="text" class="location" id="location5" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start5" value="08:00">
@@ -83,10 +108,15 @@
                 <input type="text" class="lunch" id="lunch5" size="1" placeholder="30">
                 <input type="text" class="total" id="total5" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="6">
                 <div class="day" id="day6"></div>
+                <div class="toggleContainer">
+                    <label for="off6" class="toggleOff"></label>
+                    <div class="element2"></div>
+                    <div class="element1"></div>
+                </div>
                 <input type="checkbox" class="off" id="off6">
-                <input type="date" class="date" id="date6">
+                <input type="date" readonly="readonly" class="date" id="date6">
                 <input type="text" class="location" id="location6" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start6" value="08:00">
@@ -95,10 +125,15 @@
                 <input type="text" class="lunch" id="lunch6" size="1" placeholder="30">
                 <input type="text" class="total" id="total6" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="7">
                 <div class="day" id="day7"></div>
+                <div class="toggleContainer">
+                    <label for="off7" class="toggleOff"></label>
+                    <div class="element1"></div>
+                    <div class="element2"></div>
+                </div>
                 <input type="checkbox" class="off" id="off7">
-                <input type="date" class="date" id="date7">
+                <input type="date" readonly="readonly" class="date" id="date7">
                 <input type="text" class="location" id="location7" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start7" value="08:00">
@@ -107,10 +142,15 @@
                 <input type="text" class="lunch" id="lunch7" size="1" placeholder="30">
                 <input type="text" class="total" id="total7" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="8">
                 <div class="day" id="day8"></div>
+                <div class="toggleContainer">
+                    <label for="off8" class="toggleOff"></label>
+                    <div class="element2"></div>
+                    <div class="element1"></div>
+                </div>
                 <input type="checkbox" class="off" id="off8">
-                <input type="date" class="date" id="date8">
+                <input type="date" readonly="readonly" class="date" id="date8">
                 <input type="text" class="location" id="location8" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start8" value="08:00">
@@ -119,10 +159,15 @@
                 <input type="text" class="lunch" id="lunch8" size="1" placeholder="30">
                 <input type="text" class="total" id="total8" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="9">
                 <div class="day" id="day9"></div>
+                <div class="toggleContainer">
+                    <label for="off9" class="toggleOff"></label>
+                    <div class="element1"></div>
+                    <div class="element2"></div>
+                </div>
                 <input type="checkbox" class="off" id="off9">
-                <input type="date" class="date" id="date9">
+                <input type="date" readonly="readonly" class="date" id="date9">
                 <input type="text" class="location" id="location9" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start9" value="08:00">
@@ -131,10 +176,15 @@
                 <input type="text" class="lunch" id="lunch9" size="1" placeholder="30">
                 <input type="text" class="total" id="total9" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
-                <div class="day" id="day1"></div>
+            <div class="sheetGrid" id="10">
+                <div class="day" id="day10"></div>
+                <div class="toggleContainer">
+                    <label for="off10" class="toggleOff"></label>
+                    <div class="element2"></div>
+                    <div class="element1"></div>
+                </div>
                 <input type="checkbox" class="off" id="off10">
-                <input type="date" class="date" id="date10">
+                <input type="date" readonly="readonly" class="date" id="date10">
                 <input type="text" class="location" id="location10" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start10" value="08:00">
@@ -143,10 +193,15 @@
                 <input type="text" class="lunch" id="lunch10" size="1" placeholder="30">
                 <input type="text" class="total" id="total10" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="11">
                 <div class="day" id="day11"></div>
+                <div class="toggleContainer">
+                    <label for="off11" class="toggleOff"></label>
+                    <div class="element1"></div>
+                    <div class="element2"></div>
+                </div>
                 <input type="checkbox" class="off" id="off11">
-                <input type="date" class="date" id="date11">
+                <input type="date" readonly="readonly" class="date" id="date11">
                 <input type="text" class="location" id="location11" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start11" value="08:00">
@@ -155,10 +210,15 @@
                 <input type="text" class="lunch" id="lunch11" size="1" placeholder="30">
                 <input type="text" class="total" id="total11" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="12">
                 <div class="day" id="day12"></div>
+                <div class="toggleContainer">
+                    <label for="off12" class="toggleOff"></label>
+                    <div class="element2"></div>
+                    <div class="element1"></div>
+                </div>
                 <input type="checkbox" class="off" id="off12">
-                <input type="date" class="date" id="date12">
+                <input type="date" readonly="readonly" class="date" id="date12">
                 <input type="text" class="location" id="location12" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start12" value="08:00">
@@ -167,10 +227,15 @@
                 <input type="text" class="lunch" id="lunch12" size="1" placeholder="30">
                 <input type="text" class="total" id="total12" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="13">
                 <div class="day" id="day13"></div>
+                <div class="toggleContainer">
+                    <label for="off13" class="toggleOff"></label>
+                    <div class="element1"></div>
+                    <div class="element2"></div>
+                </div>
                 <input type="checkbox" class="off" id="off13">
-                <input type="date" class="date" id="date13">
+                <input type="date" readonly="readonly" class="date" id="date13">
                 <input type="text" class="location" id="location13" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start13" value="08:00">
@@ -179,10 +244,15 @@
                 <input type="text" class="lunch" id="lunch13" size="1" placeholder="30">
                 <input type="text" class="total" id="total13" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
-            <div id="sheetGrid">
+            <div class="sheetGrid" id="14">
                 <div class="day" id="day14"></div>
+                <div class="toggleContainer">
+                    <label for="off14" class="toggleOff"></label>
+                    <div class="element2"></div>
+                    <div class="element1"></div>
+                </div>
                 <input type="checkbox" class="off" id="off14">
-                <input type="date" class="date" id="date14">
+                <input type="date" readonly="readonly" class="date" id="date14">
                 <input type="text" class="location" id="location14" placeholder="Location">
                 <img src="clockIN.svg"  id="startIcon"> 
                 <input type="time" class="start" id="start14" value="08:00">

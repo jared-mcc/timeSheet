@@ -18,8 +18,35 @@ function setDate(){
         var dateBuffer = (tomorrow.getDate() >= 10) ? ("") : ("0");
         var monthBuffer = (tomorrow.getMonth() >= 9) ? ("") : ("0");
         document.getElementById("date" + i).value = String(tomorrow.getFullYear()) + "-" + monthBuffer + String(tomorrow.getMonth() + 1) + "-" + dateBuffer + String(tomorrow.getDate());
-        document.getElementById("off"+ i).checked = (tomorrow.getDay() === 5 || tomorrow.getDay() === 6) ? true : false;
+        document.getElementById("off"+ i).checked = (tomorrow.getDay() === 6 || tomorrow.getDay() === 0) ? true : false;
+        
+        var day = "";
+        switch(tomorrow.getDay()){
+            case 0:
+                day = "Su";
+                break;
+            case 1:
+                day = "M";
+                break;
+            case 2:
+                day = "T";
+                break;
+            case 3:
+                day = "W";
+                break;     
+            case 4:
+                day = "Th";
+                break;
+            case 5:
+                day = "F";
+                break;
+            case 6:
+                day = "St";
+                break;
+        }
 
+        
+        document.getElementById("day" + i).innerText = day;
         i += x;
     }
     if(this.id === "date0")
@@ -51,6 +78,11 @@ function checkOffs(){
             document.getElementById("total"+i).style.color = "darkgrey";
             document.getElementById("total"+i).style.backgroundColor = "grey";
             
+            document.getElementById("day" + i).style.color= "darkgrey";
+            document.getElementById("day" + i).style.backgroundColor= "grey";
+
+            document.getElementById(i).style.backgroundColor = "grey";
+
             document.getElementById("total"+i).value = 0;
         }
         else{
@@ -71,9 +103,19 @@ function checkOffs(){
 
             document.getElementById("total"+i).style.color = "black";
             document.getElementById("total"+i).style.backgroundColor = "white";
+
+            document.getElementById("day" + i).style.color= "#516BEC";
+            document.getElementById("day" + i).style.backgroundColor= "white";
+
+            document.getElementById(i).style.backgroundColor = "white";
+
+
         }
+
+        changeBackgrounds();
         bigTotal += Number(document.getElementById("total"+i).value);
         document.getElementById("biggestTotal").value = bigTotal;
+
     }
 }
 
@@ -97,7 +139,8 @@ function arrayData(){
         smallArray[2] = document.getElementById("start" + row).value;
         smallArray[3] = document.getElementById("end" + row).value;
         smallArray[4] = document.getElementById("lunch" + row).value;
-        smallArray[5] = document.getElementById("off"+ row).checked;
+        smallArray[5] = document.getElementById("off" + row).checked;
+        smallArray[6] = document.getElementById("day" + row).innerText;
         bigArray.push(smallArray);
         smallArray = [];
     }
@@ -122,6 +165,7 @@ function populateData(){
         document.getElementById("end" + row).value = userData[row-1][3];
         document.getElementById("lunch" + row).value = Number(userData[row-1][4]);
         document.getElementById("off"+ row).checked = userData[row-1][5];
+        document.getElementById("day" + row).innerText = userData[row-1][6];
   }
   document.getElementById("date0").value = document.getElementById("date1").value;
   document.getElementById("date15").value = document.getElementById("date14").value;
@@ -166,11 +210,25 @@ function cancelChoice(){
 // run clean array then clear back to normal on "cancel" of clear
 function cleanChoice(){
     cleanArray();
-
     //display none block alert div
     document.getElementById("cancelButton").style.display = "none";
     document.getElementById("clearButton").style.display = "none";
     document.getElementById("button2").style.display = "block";
+}
+
+function changeBackgrounds(){
+    for(var i = 2; i <= 14; i += 2){
+        if(document.getElementById(i).style.backgroundColor != "grey"){
+            document.getElementById("day" + i).style.backgroundColor = "#DCECF7";
+            document.getElementById("total" + i).style.backgroundColor = "#DCECF7";
+            document.getElementById("date" + i).style.backgroundColor = "#DCECF7";
+            document.getElementById("location" + i).style.backgroundColor = "#DCECF7";
+            document.getElementById("start" + i).style.backgroundColor = "#DCECF7";
+            document.getElementById("end" + i).style.backgroundColor = "#DCECF7";
+            document.getElementById("lunch" + i).style.backgroundColor = "#DCECF7";
+            document.getElementById(i).style.backgroundColor = "#DCECF7";
+        }
+    }
 }
 
 //event listeners
@@ -184,6 +242,7 @@ var endDate = document.getElementById("date15");
     window.addEventListener("load", populateData, false);
     window.addEventListener("load", calculateTotals, false);
     window.addEventListener("load", checkOffs, false);
+    window.addEventListener("load", changeBackgrounds,false);
     window.addEventListener("input", calculateTotals, false);
     window.addEventListener("input", checkOffs, false);
     window.addEventListener("input", storeData, false);

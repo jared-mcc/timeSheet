@@ -107,26 +107,6 @@
     </filter>
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient4177"
-       id="linearGradient4181"
-       x1="193.78573"
-       y1="460.21936"
-       x2="433.35715"
-       y2="460.21936"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-164.06637,-685.92994)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4185"
-       id="linearGradient4189"
-       x1="60.92857"
-       y1="448.79076"
-       x2="313.35713"
-       y2="448.79076"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.699513,0,0,1.0008593,18.596216,-617.74786)" />
-    <linearGradient
-       inkscape:collect="always"
        xlink:href="#linearGradient4221"
        id="linearGradient4225"
        x1="75.214287"
@@ -154,7 +134,7 @@
        x2="509.7857"
        y2="424.50505"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.9353345,0,0,0.62112467,-427.12669,-53.688676)" />
+       gradientTransform="matrix(0.71192249,-0.60664404,0.47276415,0.40285222,-365.96883,242.20634)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4237"
@@ -164,45 +144,7 @@
        x2="509.78571"
        y2="424.50504"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.9353345,0,0,0.62112467,-731.86226,-286.49779)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4279"
-       id="linearGradient4283"
-       x1="516.57184"
-       y1="485.47723"
-       x2="531.96651"
-       y2="485.47723"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.92933499,0,0,0.92933499,-430.9508,-186.84197)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4279"
-       id="linearGradient4283-1"
-       x1="516.57184"
-       y1="485.47723"
-       x2="531.96649"
-       y2="485.47723"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.92933499,0,0,0.92933499,-775.82129,-420.99614)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4185"
-       id="linearGradient5024"
-       x1="110.92857"
-       y1="75.933632"
-       x2="192.64285"
-       y2="75.933632"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4185"
-       id="linearGradient5032"
-       x1="108.78572"
-       y1="225.57648"
-       x2="184.07144"
-       y2="225.57648"
-       gradientUnits="userSpaceOnUse" />
+       gradientTransform="matrix(-0.71192249,-0.60664404,0.47276415,-0.40285222,338.98566,660.49318)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -212,8 +154,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="198.18038"
-     inkscape:cy="793.11118"
+     inkscape:cx="72.823237"
+     inkscape:cy="850.25404"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -231,7 +173,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -239,13 +181,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <circle
+    <path
        style="fill:#ecd210;fill-opacity:1;stroke:#ecd210;stroke-opacity:1"
-       id="path4146"
-       cx="149.50508"
-       cy="-227.85712"
-       transform="matrix(0,1,-1,0,0,0)"
-       r="147.14285" />
+       d="M 227.85742 2.3613281 A 147.14285 147.14285 0 0 0 110.10547 61.566406 L 145.29883 61.566406 A 119.28571 119.28571 0 0 1 225.71094 30.21875 A 119.28571 119.28571 0 0 1 344.99609 149.50586 A 119.28571 119.28571 0 0 1 225.71094 268.79102 A 119.28571 119.28571 0 0 1 145.32617 237.44336 L 110.07422 237.44336 A 147.14285 147.14285 0 0 0 227.85742 296.64844 A 147.14285 147.14285 0 0 0 375 149.50586 A 147.14285 147.14285 0 0 0 227.85742 2.3613281 z "
+       id="path4146" />
     <circle
        style="fill:#ffffff;fill-opacity:0;stroke:#ffffff;stroke-opacity:0;filter:url(#filter4150)"
        id="path4148"
@@ -253,45 +192,18 @@
        cy="448.07648"
        r="105.71429"
        transform="matrix(0,-1,1,0,-368.07647,462.3622)" />
-    <circle
-       style="fill:url(#linearGradient4181);fill-opacity:1;stroke:#ffffff;stroke-opacity:0.94117647"
-       id="path4160"
-       cx="149.50508"
-       cy="-225.71054"
-       r="119.28571"
-       transform="matrix(0,1,-1,0,0,0)" />
-    <rect
-       style="fill:url(#linearGradient4189);fill-opacity:1;stroke:#ffffff;stroke-width:0.83672822;stroke-opacity:0.94117647"
-       id="rect4183"
-       width="175.87755"
-       height="190.16325"
-       x="61.566334"
-       y="-263.65302"
-       transform="matrix(0,1,-1,0,0,0)" />
-    <rect
+    <path
        style="fill:url(#linearGradient4231);fill-opacity:1;stroke:url(#linearGradient4225);stroke-width:0.89262474;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.94117647"
-       id="rect4219"
-       width="239.40344"
-       height="23.774446"
-       x="0.8668676"
-       y="139.03325"
-       ry="0" />
-    <rect
-       style="fill:url(#linearGradient4241);fill-opacity:1;stroke:#ecd210;stroke-width:0.76220685;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect4235"
-       width="26.055746"
-       height="110.0278"
-       x="23.170053"
-       y="154.96793"
-       transform="matrix(0.76114213,-0.64858512,0.76114213,0.64858512,0,0)" />
-    <rect
-       style="fill:url(#linearGradient4241-6);fill-opacity:1;stroke:#ecd210;stroke-width:0.76220685;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect4235-3"
-       width="26.055746"
-       height="110.0278"
-       x="-281.56552"
-       y="-77.841156"
-       transform="matrix(-0.76114213,-0.64858512,0.76114213,-0.64858512,0,0)" />
+       d="M 0.8671875 139.0332 L 0.8671875 162.80859 L 238.08594 162.80859 L 240.26953 160.94727 L 240.26953 140.42188 L 238.63867 139.0332 L 0.8671875 139.0332 z "
+       id="rect4219" />
+    <path
+       style="fill:url(#linearGradient4241);fill-opacity:1;stroke:#ecd210;stroke-width:0.75736326;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 138.41211 83.076172 L 135.58789 85.482422 L 219.33594 156.84375 L 239.16797 139.94531 L 172.42969 83.076172 L 138.41211 83.076172 z "
+       id="rect4235" />
+    <path
+       style="fill:url(#linearGradient4241-6);fill-opacity:1;stroke:#ecd210;stroke-width:0.75736326;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 218.97852 144.84375 L 135.55078 215.93359 L 175.21484 215.93359 L 238.81055 161.74414 L 218.97852 144.84375 z "
+       id="rect4235-3" />
     <rect
        style="fill:#ff0000;fill-opacity:0;stroke:#ffffff;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
        id="rect4265"
@@ -300,35 +212,5 @@
        x="63.369991"
        y="240.35754"
        transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" />
-    <rect
-       style="fill:url(#linearGradient4283);fill-opacity:1;stroke:#ffffff;stroke-width:0.929335;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
-       id="rect4277"
-       width="13.377474"
-       height="18.658056"
-       x="49.58215"
-       y="254.99994"
-       transform="matrix(0.76114213,-0.64858512,0.76114213,0.64858512,0,0)" />
-    <rect
-       style="fill:url(#linearGradient4283-1);fill-opacity:1;stroke:#ffffff;stroke-width:0.929335;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
-       id="rect4277-1"
-       width="13.377474"
-       height="18.658056"
-       x="-295.2883"
-       y="20.845812"
-       transform="matrix(-0.76114213,-0.64858512,0.76114213,-0.64858512,0,0)" />
-    <rect
-       style="fill:url(#linearGradient5024);fill-opacity:1;stroke:#ffffff;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
-       id="rect5018"
-       width="84.285698"
-       height="17.857145"
-       x="107.14286"
-       y="65.219345" />
-    <rect
-       style="fill:url(#linearGradient5032);fill-opacity:1.0;stroke:#ffffff;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
-       id="rect5026"
-       width="74.285721"
-       height="19.285717"
-       x="109.28572"
-       y="215.93362" />
   </g>
 </svg>

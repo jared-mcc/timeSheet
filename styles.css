@@ -8,12 +8,19 @@ body{
     margin: 0;
     padding: 0;
     font-size: 10pt;
+    overflow: hidden;
 }
+
+input {
+    -webkit-border-radius:0; 
+    border-radius:0;
+}
+
 
 #cancelButton, #clearButton, #button2{
     border: none;
     float: left;
-    background-color: steelblue;
+    background-color:  #4557BC;
     color: white;
     width: 80px;
     height: 30px;
@@ -23,11 +30,16 @@ body{
 }
 
 #cancelButton{
-    background-color: coral;
+    background-color: lightcoral;
 }
 
 #button2{
     display:block;
+}
+
+#biggestTotal{
+    width: 6vw;
+    text-align: center;
 }
 
 /* STYLES FOR THE GRID */
@@ -36,6 +48,7 @@ body{
     padding: 0;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 #sheetInfo{
@@ -50,18 +63,20 @@ body{
     color:white;
 }
 
-#sheetGrid{
+.sheetGrid{
     display: grid;
     grid-template-columns: 6vw 6vw 34vw 34vw 10vw 10vw;
     grid-template-rows: 3vh 3vh;
     background-color: white;
     width: 100vw;
+    -webkit-appearance: none;
 }
 
 #buttonBox{
     height: 6vh;
     width: 100%;
-    background-color: #516BEC;    
+    background-color: #516BEC;  
+      
 }
 .day{
     grid-column: 1;
@@ -69,8 +84,10 @@ body{
     border-right: 1px solid lightgray;
     color: #516BEC;
     font-weight: bold;
-    padding: 1.8vh 1.3vw;
+    padding: 1.8vh 0;
+    text-align: center;
     height: 100%;
+    -webkit-appearance: none;
 }
 
 #biggestTotal{
@@ -80,6 +97,64 @@ body{
     color: white;
     margin: 1.75vh 5px 0 0;
     border-bottom: 1px solid white;
+    -webkit-appearance: none;
+}
+
+.off0{
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    border: none;
+    margin: auto;
+    width:auto;    
+}
+
+.toggleContainer{
+    position: relative;
+    width: 2vh;
+    height: 2vh;
+    margin: 2vh .5vh;
+    cursor: pointer;
+    z-index: 15;
+    background-color: transparent;
+}
+
+.toggleOff{
+    position: absolute;
+    width: 2vh;
+    height: 2vh;
+    border: 2px solid grey;
+    cursor: pointer;
+    z-index: 15;
+    background-color: transparent;
+}
+
+.element1{
+    position: absolute;
+    width: 2.2vh;
+    height: 2px;
+    top: 0;
+    z-index: 2;
+    background-color: white;
+    transform-origin: top left;
+    transform: rotate(45deg) translate(2px, -1px);
+}
+
+.element2{
+    position: absolute;
+    width: 2.2vh;
+    height: 2px;
+    top: 0;
+    z-index: 2;
+    background-color: white;
+    transform-origin: top right;
+    transform: rotate(-45deg) translate(-3px, -2px);
+}
+
+.element1:nth-child(odd){
+    background-color:#DCECF7;
+}
+.element2:nth-child(even){
+    background-color:#DCECF7;
 }
 
 .off{
@@ -87,13 +162,18 @@ body{
     grid-row: 1 / span 2;
     border: none;
     margin: auto;
+    width:auto; 
+    display:none;   
 }
+
 
 .date{
     grid-column: 3;
     grid-row: 1;
     height: 100%;
     border: none;
+    -webkit-appearance: none;
+    padding-left: 2vw;
 }
 
 .location{
@@ -101,6 +181,8 @@ body{
     grid-row: 2;
     height: 100%;
     border: none;
+    padding-left: 2vw;
+    -webkit-appearance: none;
 }
 
 .start{
@@ -108,6 +190,7 @@ body{
     grid-row: 1;
     text-indent: 14px;
     border: none;
+    -webkit-appearance: none;
 }
 
 
@@ -118,6 +201,7 @@ body{
     height: 8vh;
     width: auto;
     margin: .4vh;
+    -webkit-appearance: none;
 }
 
 .end{
@@ -125,6 +209,7 @@ body{
     grid-row: 2;
     text-indent: 14px;
     border: none;
+    -webkit-appearance: none;
 }
 
 #endIcon{
@@ -134,6 +219,7 @@ body{
     height: 8vh;
     width: auto;
     margin: .4vh;
+    -webkit-appearance: none;
 }
 
 .lunch{
@@ -141,6 +227,7 @@ body{
     grid-row: 1 / span 2;
     padding: 5px;
     border: none;
+    -webkit-appearance: none;
 }
 
 .total{
@@ -148,6 +235,7 @@ body{
     grid-row: 1 / span 2;
     padding: 7px;
     border: none;
+    -webkit-appearance: none;
 }
 /* STYLES FOR THE INPUTS */
 #date0, #date15{
@@ -157,6 +245,7 @@ body{
     border-bottom: 1px solid white;
     width: 32%;
     height: 1.6em;
+    -webkit-appearance: none;
 }
 
 #employeeName{
@@ -166,5 +255,6 @@ body{
     border-bottom: 1px solid white;
     width: 28%;
     height: 1.6em;
+    -webkit-appearance: none;
 }
 
