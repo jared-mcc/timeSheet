@@ -5,54 +5,82 @@
 
 //function to populated dates based off of one entered
 function setDate(){
+    document.getElementById("blackout").style.display = "none";
+    document.getElementById("welcome").style.display = "none";
     
-    var i = (this.id === "date0") ? (1) : (14);
-    var x = (this.id === "date0") ? (1) : (-1);
-    var end = (this.id === "date0") ? (15) : (0);
-    var tomorrow = (this.id === "date0") ? new Date(document.getElementById("date0").value) : new Date(document.getElementById("date15").value);
-    if(this.id === "date15")
-        tomorrow.setDate(tomorrow.getDate()+2);
+    startDate = document.getElementById("date0");
+    endDate = document.getElementById("date15");
+
+    if(startDate.value != ""){
+        var i = 1;
+        var x = 1;
+        var end = 15;
+        var tomorrow = new Date(startDate.value)
+    }
+       if(endDate.value != ""){
+           var i = 14;
+           var x = -1;
+           var end = 0;
+           var tomorrow = new Date(endDate.value);
+       } 
+
+     
+    for(var y = 1; y <=14; y++){
+        document.getElementById("off"+y).checked = false;
+    }
 
     while(i !== end){
         tomorrow.setDate( tomorrow.getDate() + x );
         var dateBuffer = (tomorrow.getDate() >= 10) ? ("") : ("0");
         var monthBuffer = (tomorrow.getMonth() >= 9) ? ("") : ("0");
         document.getElementById("date" + i).value = String(tomorrow.getFullYear()) + "-" + monthBuffer + String(tomorrow.getMonth() + 1) + "-" + dateBuffer + String(tomorrow.getDate());
-        document.getElementById("off"+ i).checked = (tomorrow.getDay() === 6 || tomorrow.getDay() === 0) ? true : false;
-        
-        var day = "";
-        switch(tomorrow.getDay()){
-            case 0:
-                day = "Su";
-                break;
-            case 1:
-                day = "M";
-                break;
-            case 2:
-                day = "T";
-                break;
-            case 3:
-                day = "W";
-                break;     
-            case 4:
-                day = "Th";
-                break;
-            case 5:
-                day = "F";
-                break;
-            case 6:
-                day = "St";
-                break;
+       
+
+        var settings = JSON.parse(localStorage.getItem("settings"));
+
+        for(var j = 0; j <= 6; j++){
+            if(tomorrow.getDay() === settings[4][j]){
+               document.getElementById("off"+ i).checked = true;
+            }
+            
+            var day = "";
+            switch(tomorrow.getDay()){
+                case 0:
+                    day = "Su";
+                    break;
+                case 1:
+                    day = "M";
+                    break;
+                case 2:
+                    day = "T";
+                    break;
+                case 3:
+                    day = "W";
+                    break;     
+                case 4:
+                    day = "Th";
+                    break;
+                case 5:
+                    day = "F";
+                    break;
+                case 6:
+                    day = "St";
+                    break;
+            }
         }
 
         
         document.getElementById("day" + i).innerText = day;
         i += x;
     }
-    if(this.id === "date0")
+
+    localStorage["settings"] = JSON.stringify(settings);
+
+    if(startDate.value = "")
         document.getElementById("date15").value = document.getElementById("date14").value;
-    else
+    if(endDate.value ="")
         document.getElementById("date0").value = document.getElementById("date1").value;
+
 }
 
 //function to set everything to zero if "off"
@@ -152,12 +180,14 @@ function arrayData(){
 function storeData(){
     localStorage["userDatas"] = JSON.stringify(arrayData());
     localStorage["userName"] = JSON.stringify(document.getElementById("employeeName").value);
+   // localStorage["settings"] = JSON.stringify(document.get)
 }
 //function to populate data from stored matrix
 function populateData(){
    
     var userData = JSON.parse(localStorage.getItem('userDatas'));
     document.getElementById("employeeName").value = JSON.parse(localStorage.getItem('userName'));
+
   for(var row = 1; row <= 14; row++){
         document.getElementById("date" + row).value = userData[row-1][0];
         document.getElementById("location" + row).value = userData[row-1][1];
@@ -173,18 +203,24 @@ function populateData(){
 
 //function to clear array and populate initial
 function cleanArray(){
+
+   var settings = JSON.parse(localStorage.getItem("settings"));
+    
     for(var row = 1; row <= 14; row++){
         localStorage.clear();
         document.getElementById("date" + row).value = "";
-        document.getElementById("location" + row).value = "";
-        document.getElementById("start" + row).value = "08:00";
-        document.getElementById("end" + row).value = "16:30";
-        document.getElementById("lunch" + row).value = "30";
+        document.getElementById("location" + row).value = settings[0];
+        document.getElementById("start" + row).value = settings[1];
+        document.getElementById("end" + row).value = settings[2];
+        document.getElementById("lunch" + row).value = settings[3];
         document.getElementById("off" + row).checked = false;
     }
     document.getElementById("employeeName").value = "";
     document.getElementById("date0").value = "";
     document.getElementById("date15").value = "";
+    
+    localStorage["settings"] = JSON.stringify(settings);
+
     storeData();
     checkOffs();
     calculateTotals();
@@ -216,6 +252,31 @@ function cleanChoice(){
     document.getElementById("button2").style.display = "block";
 }
 
+function firstTime(){
+    if(!localStorage.getItem("userDatas")){
+        document.getElementById("blackout").style.display = "block";
+        document.getElementById("welcome").style.display = "block"; 
+        var settings = ["","08:00","16:30","30",[0,7,7,7,7,7,6]];
+        localStorage["settings"] = JSON.stringify(settings);
+        cleanArray();
+    }
+
+}
+
+function welcome(){
+    document.getElementById("welcomeh2").style.display = "none";
+    document.getElementById("welcomeh3").style.display = "none";
+    for( var i = 0; i < document.getElementsByClassName("para").length; i++){
+         document.getElementsByClassName("para")[i].style.display = "none";
+    }
+    document.getElementById("blackout").style.transform = "translateY(4vh)";
+    document.getElementById("welcome").style.transform = "translateY(3vh)";
+    document.getElementById("welcome").style.height = "15vh";
+    document.getElementsByClassName("pointy")[0].style.transform = "rotate(45deg)";
+    document.getElementById("paraish").style.opacity = "1";
+    document.getElementById("paraish").style.display = "block";
+}
+
 function changeBackgrounds(){
     for(var i = 2; i <= 14; i += 2){
         if(document.getElementById(i).style.backgroundColor != "grey"){
@@ -231,25 +292,148 @@ function changeBackgrounds(){
     }
 }
 
+function settingsWindow(){
+   
+   var blackout = document.getElementById("blackout");
+   var toggle =  (document.getElementById("settingsDiv").style.display === "grid") ? 0 : 1;
+
+    blackout.style.display = (toggle === 1) ? "block" : "none";
+    blackout.style.visibility = (toggle === 1) ? "visible" : "hidden";
+    blackout.style.transform = (toggle === 1) ? "translateY(-6vh)" : "translateY(-6vh)";
+    document.getElementById("settingsDiv").style.display = (toggle === 1) ? "grid" : "none";
+    document.getElementById("settingsPointy").style.transform = (toggle === 1) ? "rotate(45deg)" : "rotate(0)";
+}
+
+//function to make sure the user wants to clear
+function applyAsk(){
+    document.getElementById("applySettings").style.display = "block";
+    document.getElementById("cancelSetting").style.display = "block";
+    document.getElementById("askSetting").style.display = "none";
+}
+
+function applyCancel(){
+    document.getElementById("applySettings").style.display = "none";
+    document.getElementById("cancelSetting").style.display = "none";
+    document.getElementById("askSetting").style.display = "block";
+}
+
+function applySettings(){
+    //Compile setting things into array
+    var previousSettings = JSON.parse(localStorage.getItem("settings"));
+    var setting =["","08:00","16:30","30",[0,7,7,7,7,7,6]];
+    setting[0] = document.getElementById("locationSetting").value;
+    setting[1] = document.getElementById("startSetting").value;
+    setting[2] = document.getElementById("endSetting").value;
+    setting[3] = document.getElementById("lunchSetting").value;
+
+    for(var i = 0; i <= 6; i++){
+        if(document.getElementById("offS"+i).checked)
+            setting[4][i] = i;
+        else
+            setting[4][i] = 7;
+    
+    }
+
+    document.getElementById("applySettings").style.display = "none";
+    document.getElementById("cancelSetting").style.display = "none";
+    document.getElementById("askSetting").style.display = "block";
+    
+    localStorage["settings"] = JSON.stringify(setting);
+    cleanAfterSettings(previousSettings);
+    settingsWindow();
+}
+
+function cleanAfterSettings(previousSettings){
+    var settings = JSON.parse(localStorage.getItem("settings"));
+    
+    for(var row = 1; row <= 14; row++){
+        if(document.getElementById("location"+ row).value === previousSettings[0])
+            document.getElementById("location" + row).value = settings[0];
+        if(document.getElementById("start"+ row).value === previousSettings[1])
+            document.getElementById("start" + row).value = settings[1];
+        if(document.getElementById("end"+ row).value === previousSettings[2])
+            document.getElementById("end" + row).value = settings[2];
+        if(document.getElementById("lunch"+ row).value === previousSettings[3])
+            document.getElementById("lunch" + row).value = settings[3];
+    }
+    localStorage["settings"] = JSON.stringify(settings);
+
+    storeData();
+    checkOffs();
+    calculateTotals();
+}
+
+function setSettings(){
+    var settings = JSON.parse(localStorage.getItem("settings"));
+
+    document.getElementById("locationSetting").value = settings[0];
+    document.getElementById("startSetting").value = settings[1];
+    document.getElementById("endSetting").value = settings[2];
+    document.getElementById("lunchSetting").value = settings[3];
+
+    for(var i = 0; i <= 6; i++){
+        if(settings[4][i] != 7)
+            document.getElementById("offS"+i).checked = true;
+    }
+
+    localStorage["settings"] = JSON.stringify(settings);
+
+}
+
+//function to assign settings to stored variables
+function settingsCheck(){
+    /*var settings = [];
+
+    settings[0] = document.getElementById("locationSetting").value;
+    settings[1] = document.getElementById("startSetting").value;
+    settings[2] = document.getElementById("endSetting").value;
+    settings[3] = document.getElementById("lunchSetting").value;
+    settings[4] = [];
+
+    for(var i = 0; i <= 6; i++){
+        if(document.getElementById("offS"+i).checked)
+            settings[4][i] = i;
+        else    
+            settings[4][i] = 7;
+    }
+
+    localStorage["settings"] = JSON.stringify(settings);
+*/
+  
+}
+
+
+
 //event listeners
-var button1 =   document.getElementById("button1");
+var welcomeButton =   document.getElementById("welcomeButton");
 var button2 =   document.getElementById("button2");
 var cancelButton = document.getElementById("cancelButton");
 var clearButton = document.getElementById("clearButton");
 var startDate = document.getElementById("date0");
 var endDate = document.getElementById("date15");
-    
+var settingsButton = document.getElementById("settingsButton");
+var applySetting =  document.getElementById("applySettings");
+var cancelSetting = document.getElementById("cancelSetting");
+var askSetting = document.getElementById("askSetting");
+
+    window.addEventListener("load", firstTime, false);
     window.addEventListener("load", populateData, false);
     window.addEventListener("load", calculateTotals, false);
     window.addEventListener("load", checkOffs, false);
     window.addEventListener("load", changeBackgrounds,false);
+    window.addEventListener("load", setSettings, false);
     window.addEventListener("input", calculateTotals, false);
     window.addEventListener("input", checkOffs, false);
     window.addEventListener("input", storeData, false);
     startDate.addEventListener("input", setDate, false);
     endDate.addEventListener("input", setDate, false);
+    welcomeButton.addEventListener("click", welcome, false);
     button2.addEventListener("click", cleanPop, false);
     clearButton.addEventListener("click", cleanChoice, false);
     cancelButton.addEventListener("click", cancelChoice, false);
+    settingsButton.addEventListener("click", settingsWindow, false);
+    askSetting.addEventListener("click", applyAsk, false);
+    cancelSetting.addEventListener("click", applyCancel, false);
+    applySetting.addEventListener("click", applySettings, false);
 
 
