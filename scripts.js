@@ -11,76 +11,79 @@ function setDate(){
     startDate = document.getElementById("date0");
     endDate = document.getElementById("date15");
 
-    if(startDate.value != ""){
-        var i = 1;
-        var x = 1;
-        var end = 15;
-        var tomorrow = new Date(startDate.value)
+    if(typeof(this) != 'undefined'){
+        var i = (this.id === "date0") ? (1) : (14);
+        var x = (this.id === "date0") ? (1) : (-1);
+        var end = (this.id === "date0") ? (15) : (0);
+        var tomorrow = (this.id === "date0") ? new Date(startDate.value) : new Date(endDate.value);
+        if(this.id === "date15")
+            tomorrow.setDate(tomorrow.getDate()+2);
     }
-       if(endDate.value != ""){
-           var i = 14;
-           var x = -1;
-           var end = 0;
-           var tomorrow = new Date(endDate.value);
-       } 
-
+    else{
+        if(startDate.value != ""){
+            var i = 1;
+            var x = 1;
+            var end = 15;
+            var tomorrow = new Date(startDate.value)
+        }
+        else if(endDate.value != ""){
+            var i = 14;
+            var x = -1;
+            var end = 0;
+            var tomorrow = new Date(endDate.value);
+        } 
+    }
      
     for(var y = 1; y <=14; y++){
         document.getElementById("off"+y).checked = false;
     }
+
+    var settings = JSON.parse(localStorage.getItem("settings"));
+    localStorage["settings"] = JSON.stringify(settings);
 
     while(i !== end){
         tomorrow.setDate( tomorrow.getDate() + x );
         var dateBuffer = (tomorrow.getDate() >= 10) ? ("") : ("0");
         var monthBuffer = (tomorrow.getMonth() >= 9) ? ("") : ("0");
         document.getElementById("date" + i).value = String(tomorrow.getFullYear()) + "-" + monthBuffer + String(tomorrow.getMonth() + 1) + "-" + dateBuffer + String(tomorrow.getDate());
-       
-
-        var settings = JSON.parse(localStorage.getItem("settings"));
-
+    
         for(var j = 0; j <= 6; j++){
-            if(tomorrow.getDay() === settings[4][j]){
+            if(tomorrow.getDay() === settings[4][j])
                document.getElementById("off"+ i).checked = true;
-            }
-            
-            var day = "";
-            switch(tomorrow.getDay()){
-                case 0:
-                    day = "Su";
-                    break;
-                case 1:
-                    day = "M";
-                    break;
-                case 2:
-                    day = "T";
-                    break;
-                case 3:
-                    day = "W";
-                    break;     
-                case 4:
-                    day = "Th";
-                    break;
-                case 5:
-                    day = "F";
-                    break;
-                case 6:
-                    day = "St";
-                    break;
-            }
         }
-
-        
+            
+        var day = "";
+        switch(tomorrow.getDay()){
+            case 0:
+                day = "Su";
+                break;
+            case 1:
+                day = "M";
+                break;
+            case 2:
+                day = "T";
+                break;
+            case 3:
+                day = "W";
+                break;     
+            case 4:
+                day = "Th";
+                break;
+            case 5:
+                day = "F";
+                break;
+            case 6:
+                day = "St";
+                break;
+        }//end switch
+         
         document.getElementById("day" + i).innerText = day;
         i += x;
     }
 
-    localStorage["settings"] = JSON.stringify(settings);
-
-    if(startDate.value = "")
-        document.getElementById("date15").value = document.getElementById("date14").value;
-    if(endDate.value ="")
-        document.getElementById("date0").value = document.getElementById("date1").value;
-
+    startDate.value = document.getElementById("date1").value;
+    endDate.value = document.getElementById("date14").value;
+    
 }
 
 //function to set everything to zero if "off"
@@ -261,6 +264,11 @@ function firstTime(){
         cleanArray();
     }
 
+    if(!localStorage.getItem("settings")){
+       var settings = ["","08:00","16:30","30",[0,7,7,7,7,7,6]];
+       localStorage["settings"] = JSON.stringify(settings);
+    }
+
 }
 
 function welcome(){
@@ -339,6 +347,7 @@ function applySettings(){
     document.getElementById("askSetting").style.display = "block";
     
     localStorage["settings"] = JSON.stringify(setting);
+    setDate();
     cleanAfterSettings(previousSettings);
     settingsWindow();
 }
@@ -380,29 +389,9 @@ function setSettings(){
 
 }
 
-//function to assign settings to stored variables
-function settingsCheck(){
-    /*var settings = [];
-
-    settings[0] = document.getElementById("locationSetting").value;
-    settings[1] = document.getElementById("startSetting").value;
-    settings[2] = document.getElementById("endSetting").value;
-    settings[3] = document.getElementById("lunchSetting").value;
-    settings[4] = [];
-
-    for(var i = 0; i <= 6; i++){
-        if(document.getElementById("offS"+i).checked)
-            settings[4][i] = i;
-        else    
-            settings[4][i] = 7;
-    }
-
-    localStorage["settings"] = JSON.stringify(settings);
-*/
-  
-}
-
-
+const preObject = document.getElementById("object");
+const dbRefObject = firebase.database().ref().child('object');
+dbRefObject.on('value', snap => console.log(snap.val()));
 
 //event listeners
 var welcomeButton =   document.getElementById("welcomeButton");
@@ -416,6 +405,7 @@ var applySetting =  document.getElementById("applySettings");
 var cancelSetting = document.getElementById("cancelSetting");
 var askSetting = document.getElementById("askSetting");
 
+    
     window.addEventListener("load", firstTime, false);
     window.addEventListener("load", populateData, false);
     window.addEventListener("load", calculateTotals, false);
@@ -423,8 +413,14 @@ var askSetting = document.getElementById("askSetting");
     window.addEventListener("load", changeBackgrounds,false);
     window.addEventListener("load", setSettings, false);
     window.addEventListener("input", calculateTotals, false);
+    for(var i = 1; i <= 14; i++)
+        document.getElementById("off" + i).addEventListener("click", calculateTotals);
     window.addEventListener("input", checkOffs, false);
+    for(var i = 1; i <= 14; i++)
+        document.getElementById("off" + i).addEventListener("click", checkOffs );
     window.addEventListener("input", storeData, false);
+    for(var i = 1; i <= 14; i++)
+        document.getElementById("off" + i).addEventListener("click", storeData );
     startDate.addEventListener("input", setDate, false);
     endDate.addEventListener("input", setDate, false);
     welcomeButton.addEventListener("click", welcome, false);

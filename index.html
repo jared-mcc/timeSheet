@@ -29,14 +29,16 @@
                 <input type="date" id="date15">
                 <input type="text" id="employeeName" placeholder="Employee Name">
             </div><!-- end sheetInfo-->
-            <div class="sheetGrid" style="color: white; background-color:#4557BC" >
+           
+            <div class="sheetGrid" id="headGrid" style="color: white; background-color:#4557BC" >
                 <div class="day" id="day0" style="border: none;"></div>
                 <p class="off0">OFF</p>
                 <p class="date" style="grid-row: 1 / span 2; text-align: center;">Jobsite</p>
                 <p class="start" style="grid-row: 1 / span 2; text-align: center;">Time In/Out</p>
-                <p class="lunch" style="grid-row: 1; padding:0; margin: 1vh auto; text-align: center; font-size:9pt;">Lunch<br>(min)</p>
-                <p class="total" style="grid-row: 1; padding:0; margin: 1vh auto; text-align: center; font-size:9pt;">Total<br>(hr)</p>
+                <p class="lunch" style="grid-row: 1; padding:0; margin: 1vh auto; text-align: center;">Lunch<br>(min)</p>
+                <p class="total" style="grid-row: 1; padding:0; margin: 1vh auto; text-align: center;">Total<br>(hr)</p>
             </div><!-- end sheetGrid-->
+            <div id="content">
             <div class="sheetGrid" id="1">
                 <div class="day" id="day1"></div>
                 <div class="toggleContainer">
@@ -275,6 +277,7 @@
                 <input type="text" class="lunch" id="lunch14" size="1" placeholder="30">
                 <input type="text" class="total" id="total14" size="1" placeholder="Total Hours">
             </div><!-- end sheetGrid-->
+            </div><!-- end content -->
             <div id="buttonBox">
                 <div id="confirmAlert">
                     <div id="buttonDiv">
@@ -314,12 +317,30 @@
                     </div>
                 </div>
                 <div id="bigtotal">
-                    <button type="button" id="settingsButton"><img id="settingIcon" alt="settings" src="gear.png"></button>
+                  <button type="button" id="settingsButton"><img id="settingIcon" alt="settings" src="gear.png"></button>
                   <input type="text" id="biggestTotal" size="1" placeholder="Total Hours">
                   <label style="background-color: #516BEC; color: white; float: right; margin: 1.8vh 5px;" for="biggestTotal">Total Hours:</label>
                 </div>
             </div><!-- end buttonBox-->
         </div><!-- end container-->
+        <pre id="object">
+
+        </pre>
+        <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCVoCyrnf0E0q2y2WeVKmleLCW2TxzJk1c",
+            authDomain: "time-sheet-23100.firebaseapp.com",
+            databaseURL: "https://time-sheet-23100.firebaseio.com",
+            projectId: "time-sheet-23100",
+            storageBucket: "time-sheet-23100.appspot.com",
+            messagingSenderId: "940698186925"
+        };
+        firebase.initializeApp(config);
+
+     </script>
     <script src="scripts.js"></script>
     </body>
 </html>
